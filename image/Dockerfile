@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Phusion <info@phusion.nl>
+FROM emfox/debian:squeeze-32bit
+MAINTAINER Emfox Zhou <EmfoxZhou@gmail.com>
 
 ADD . /bd_build
 
