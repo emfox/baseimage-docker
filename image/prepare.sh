@@ -16,7 +16,7 @@ if grep -E '^ID=' /etc/os-release | grep -q ubuntu; then
   sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
   sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list
 fi
-
+echo 'deb http://archive.debian.org/debian squeeze main' > /etc/apt/sources.list
 apt-get update
 
 ## Fix some issues with APT packages.
@@ -38,7 +38,8 @@ $minimal_apt_get_install apt-utils
 $minimal_apt_get_install apt-transport-https ca-certificates
 
 ## Install add-apt-repository
-$minimal_apt_get_install software-properties-common
+#$minimal_apt_get_install software-properties-common
+$minimal_apt_get_install lsb-release
 
 ## Upgrade all packages.
 apt-get dist-upgrade -y --no-install-recommends -o Dpkg::Options::="--force-confold"
