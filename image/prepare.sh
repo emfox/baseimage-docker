@@ -16,7 +16,8 @@ if grep -E '^ID=' /etc/os-release | grep -q ubuntu; then
   sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
   sed -i 's/^#\s*\(deb.*multiverse\)$/\1/g' /etc/apt/sources.list
 fi
-
+# Workaround for issue 10: https://github.com/debuerreotype/docker-debian-eol-artifacts/issues/10
+echo -e "deb http://archive.debian.org/debian/ stretch main contrib non-free\ndeb http://archive.debian.org/debian/ stretch-backports main contrib non-free\ndeb http://archive.debian.org/debian-security/ stretch/updates main contrib non-free" > /etc/apt/sources.list
 apt-get update
 
 ## Fix some issues with APT packages.
